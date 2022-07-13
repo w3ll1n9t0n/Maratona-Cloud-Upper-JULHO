@@ -1,0 +1,43 @@
+#!/bin/bash
+sudo apt-get update -y
+sudo apt-get install apache2 php7.4 libapache2-mod-php7.4 php7.4-common php7.4-curl php7.4-intl php7.4-mbstring php7.4-json php7.4-xmlrpc php7.4-soap php7.4-mysql php7.4-gd php7.4-xml php7.4-cli php7.4-zip wget mysql-client unzip git binutils ruby -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo systemctl restart apache2
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+sudo service codedeploy-agent start
+sudo chmod 777 /etc/init.d/codedeploy-agent
+sudo wget https://s3.sa-east-1.amazonaws.com/pages.cloudtreinamentos.com/aws/maratona/MaratonaUpper.zip
+sudo unzip -o MaratonaUpper.zip -d /var/www/html/
+sudo rm /var/www/html/index.html
+sudo chmod -R 777 /var/www/html
+
+
+
+
+{
+  "Id": "Policy1657669181879",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1657669166327",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::NOMEDOSEUBUCKET/*",
+      "Principal": "*"
+    }
+  ]
+}
+
+
+Resource colocar o nome do seu bucket
+Colocar uma asterisco no PRINCIPAL "*"
+Erro no { "so retirar o espaço antes"
+
+
+Quem está com a mensagem "Erro ao salvar o arquivo!" ao tentar enviar uma nova imagem, faça os seguintes procedimentos:
+1. Vá até o EC2, seleciona a instância, e nos detalhes da instância verifique se a função/role está aparecendo.
